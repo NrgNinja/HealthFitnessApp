@@ -9,9 +9,22 @@ export const useSignup = () => {
   const signup = async (email, password) => {
     setIsLoading(true)
     setError(null)
-    
-    // const response = await fetch('/api/user/signup', {
-    const response = await fetch('http://localhost:5001/api/user/signup', {
+    const app_name = 'cop4331-cards-app'
+
+    function buildPath(route)
+    {
+        if (process.env.NODE_ENV === 'production') 
+        {
+            return 'https://' + app_name + '.herokuapp.com/' + route;
+        }
+        else
+        {
+            return 'http://localhost:5001' + route;
+        }
+    }
+
+    const response = await fetch(buildPath('/api/user/signup'), {
+    // const response = await fetch('http://localhost:5001/api/user/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ email, password })

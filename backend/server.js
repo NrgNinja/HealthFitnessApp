@@ -7,6 +7,13 @@ const userRoutes = require('./routes/user')
 const cors = require('cors')
 const bodyParser = require('body-parser');
 
+const path = require('path');
+
+
+// const PORT = process.env.PORT || 5001;
+// app.set('port', (process.env.PORT || 5001));
+// const url = process.env.MONGODB_URI;
+
 
 // express app
 const app = express()
@@ -36,25 +43,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((error) => {
     console.log(error)
   })
-// require('dotenv').config();
-// const mongoose = require('mongoose')
-// const express = require('express');
-// const cors = require('cors');
-// const workoutRoutes = require('./routes/workouts')
-// const userRoutes = require('./routes/user')
-// const bodyParser = require('body-parser');
 
-// const path = require('path');
-
-
-// const PORT = process.env.PORT || 5001;
-
-// app.use(cors());
-// app.use(bodyParser.json());
-
-// app.set('port', (process.env.PORT || 5001));
-
-// const url = process.env.MONGODB_URI;
 // const MongoClient = require('mongodb').MongoClient;
 // const client = new MongoClient(url);
 // client.connect(console.log("Mongo DB connected!"));
