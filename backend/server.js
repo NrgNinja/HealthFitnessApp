@@ -44,6 +44,18 @@ mongoose.connect(process.env.MONGODB_URI)
     console.log(error)
   })
 
+if (process.env.NODE_ENV === 'production') 
+{
+  // Set static folder
+  app.use(express.static('frontend/build'));
+
+
+  app.get('*', (req, res) => 
+  {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+}
+
 // const MongoClient = require('mongodb').MongoClient;
 // const client = new MongoClient(url);
 // client.connect(console.log("Mongo DB connected!"));
