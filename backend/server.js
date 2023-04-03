@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+// require packages
 const express = require('express')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts')
@@ -7,13 +8,7 @@ const userRoutes = require('./routes/user')
 const cors = require('cors')
 const bodyParser = require('body-parser');
 
-const path = require('path');
-
-
-// const PORT = process.env.PORT || 5001;
-// app.set('port', (process.env.PORT || 5001));
-// const url = process.env.MONGODB_URI;
-
+// const path = require('path');
 
 // express app
 const app = express()
@@ -37,24 +32,24 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     // listen for requests
     app.listen(process.env.PORT, () => {
-      console.log('connected to db & listening on port', process.env.PORT)
+      console.log('Connected to MongoDB & listening on port', process.env.PORT)
     })
   })
   .catch((error) => {
     console.log(error)
   })
 
-if (process.env.NODE_ENV === 'production') 
-{
-  // Set static folder
-  app.use(express.static('frontend/build'));
+// if (process.env.NODE_ENV === 'production') 
+// {
+//   // Set static folder
+//   app.use(express.static('frontend/build'));
 
 
-  app.get('*', (req, res) => 
-  {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-  });
-}
+//   app.get('*', (req, res) => 
+//   {
+//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+//   });
+// }
 
 // const MongoClient = require('mongodb').MongoClient;
 // const client = new MongoClient(url);
