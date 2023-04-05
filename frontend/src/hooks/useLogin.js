@@ -9,7 +9,7 @@ export const useLogin = () => {
   const login = async (email, password) => {
     setIsLoading(true)
     setError(null)
-    const app_name = 'cop4331-cards-app'
+    const app_name = 'lift-log'
 
     function buildPath(route)
     {
@@ -24,6 +24,7 @@ export const useLogin = () => {
     }
 
     // const response = await fetch('http://localhost:5001/api/user/login', {
+    // const response = await fetch('/api/user/login'), {
     const response = await fetch(buildPath('/api/user/login'), {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
