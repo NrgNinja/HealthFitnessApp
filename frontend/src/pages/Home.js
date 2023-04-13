@@ -13,7 +13,7 @@
 //             <CardUI />
 //         </div>
 //     );
-// }
+// } I gotta be retarded.
 
 // export default CardPage;
 import { useEffect }from 'react'
