@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
 
+// tristan was here
+
 // pages & components
 import Home from './pages/Home'
 import Login from './pages/Login'
