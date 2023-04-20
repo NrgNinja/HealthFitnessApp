@@ -2,13 +2,14 @@
   "name": "healthfitnessapp",
   "version": "1.0.0",
   "description": "Workout App for COP4331",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "dotenv": "^16.0.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Renato Diaz",
   "license": "ISC"
