@@ -24,7 +24,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import WorkoutDetails from '../components/WorkoutDetails'
 import WorkoutForm from '../components/WorkoutForm'
 
-const Home = () => {
+const AddWorkout = () => {
   const {workouts, dispatch} = useWorkoutsContext()
   const {user} = useAuthContext()
 
@@ -57,4 +57,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default AddWorkout;

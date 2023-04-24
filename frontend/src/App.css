@@ -1,38 +1,131 @@
 .App {
+  background-color: #282c34;
+  height: 100vh;
+}
+
+.Logout {
+  background-color: lightgrey;
+  position: absolute;
+  float:right;
+  margin-left: 90%;
+}
+
+.Calbox {
   text-align: center;
+  background-color: lightgrey;
+  border: 3px solid black;
+  border-radius:10px;
+  float:inline-end;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top:5%;
+  height: 200px;
+  table-layout: auto;
+  position:relative;
+}
+.Dailycals {
+  position: absolute;
+  top:5%;
+  left:5%;
+}
+.Eats {
+  position: absolute;
+  top:5%;
+  left:35%;
+}
+.Lifts {
+  position: absolute;
+  top:5%;
+  right:35%;
+}
+.Total {
+  position: absolute;
+  top:5%;
+  right:10%;
+}
+.Calnum {
+  font-size:xx-large;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Activitybox { 
+    margin-top: 2%;
+    margin-right: 75%;
+    width:30%;
+    height:45%;
+    position: absolute;
+    color:white;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Workoutbox {
+  background-color:lightgrey;
+  border: 3px solid black;
+  border-radius:20px;
+  margin-right:50%;
+  height:80%;
+  width:95%;
+  color:black;
+  transition: 1s;
+}
+.Workoutbox:hover {
+  transform:scale(1.04);
+}
+.Workouts {
+  background-color:#282c34;
+  border-radius:20px;
+  margin:5px;
+  height:80%;
+  width:95%;
+  color:white;
+  float: left;
+  margin-left: 5% auto;
+  margin-top: 5%;
+  height: 40%;
+  width:30%;
+  transition:1s;
+}
+.Workouts:hover {
+  transform:scale(1.04);
+}
+.Foodlist {
+    float:right;
+    height: 45%;
+    width:30%;
+    border: 3px solid black;
+    margin-top:5%;
+    margin-right:5%;
+    background-color:lightgrey;
+    text-align:center;
+    border-radius:20px;
+    transition: 1s;
+}
+.Foodlist:hover {
+  transform:scale(1.04);
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #15171b;
+  min-height: 2vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: top;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-align:center;
 }
 
-.App-link {
-  color: #61dafb;
+.app-header-account {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.flex-items-center {
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.display-flex {
+  display: flex;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
 }
