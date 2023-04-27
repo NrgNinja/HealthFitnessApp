@@ -37,6 +37,16 @@ export const useLogin = () => {
       setError(json.error)
     }
     if (response.ok) {
+      
+      //new line to make verification
+      if (!json.verified) {
+        setError('Please verify your email address before logging in')
+        setIsLoading(false)
+        return
+      }
+
+
+      // -----------
       // save the user to local storage
       localStorage.setItem('user', JSON.stringify(json))
 
