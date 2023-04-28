@@ -12,6 +12,14 @@
 /build
 /frontend/build
 
+# Node modules
+backend/node_modules/
+frontend/node_modules/
+
+# Environment variables
+backend/.env
+frontend/.env.local
+
 # misc
 .DS_Store
 .env.local
