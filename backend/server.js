@@ -7,19 +7,7 @@ const workoutRoutes = require('./routes/workouts')
 const userRoutes = require('./routes/user')
 const cors = require('cors')
 const bodyParser = require('body-parser');
-
-// ChatGPT said to include this for build, but it breaks the local host
-// --------------------------------------------
-// const path = require('path');
-
-// // Serve static files from the frontend build folder
-// app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-// // Catch-all route to serve the frontend's index.html file
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-// });
-// --------------------------------------------
+const path = require('path');
 
 // express app
 const app = express()
@@ -37,6 +25,22 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/workouts', workoutRoutes)
 app.use('/api/user', userRoutes)
+
+// deployment
+__dirname = path.resolve()
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the frontend build folder
+  app.use(express.static(path.join(__dirname, '/frontend/build')));
+  // Catch-all route to serve the frontend's index.html file
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+}
+else{
+  app.get('/', (req, res) => {
+    res.send('API is running...')
+  })
+}
 
 // connect to db
 mongoose.connect(process.env.MONGODB_URI)
