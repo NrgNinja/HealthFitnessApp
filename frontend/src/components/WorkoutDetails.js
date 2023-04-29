@@ -12,6 +12,9 @@ const WorkoutDetails = ({ workout }) => {
     if (!user) {
       return
     }
+    if (!window.confirm('Are you sure you want to delete this workout?')) {
+      return
+    }
 
     const response = await fetch('/api/workouts/' + workout._id, {
       method: 'DELETE',
