@@ -5,7 +5,7 @@ const sgMail = require('@sendgrid/mail');
 // Load environment variables from file
 dotenv.config({ path: 'sendgrid.env' });
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-console.log(process.env.SENDGRID_API_KEY);
+
 const sendVerificationEmail = async (recipientEmail, verificationLink) => {
   const message = {
     to: recipientEmail,

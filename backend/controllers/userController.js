@@ -1,5 +1,6 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt');
 const { sendVerificationEmail } = require('../emailUtils');
 
 const createToken = (_id) => {
@@ -22,6 +23,7 @@ const loginUser = async (req, res) => {
   }
 }
 
+
 // signup a user
 const signupUser = async (req, res) => {
   try {
@@ -33,8 +35,11 @@ const signupUser = async (req, res) => {
       return res.status(409).json({ error: 'User already exists' });
     }
 
-    // Create the new user
-    const user = await User.create({ email, password });
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create the new user with hashed password
+    const user = await User.create({ email, password: hashedPassword });
 
     // Generate a verification link and send it to the user's email
     const verificationToken = jwt.sign({ userId: user._id }, process.env.SECRET, { expiresIn: '1h' });
@@ -47,5 +52,6 @@ const signupUser = async (req, res) => {
     return res.status(500).json({ error: 'Server error' });
   }
 };
+
 
 module.exports = { signupUser, loginUser }
