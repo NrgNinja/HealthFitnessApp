@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 // tristan was here
 
@@ -9,7 +9,6 @@ import Home from './pages/main'
 import AddWorkout from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import Navbar from './components/Navbar'
 
 // key={location.pathname} location={location}
 function AnimatedRoutes() {

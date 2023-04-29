@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { useAuthContext } from './hooks/useAuthContext'
-import { AnimatePresence, motion } from 'framer-motion'
+import { BrowserRouter } from 'react-router-dom'
+
 
 // tristan was here
 
