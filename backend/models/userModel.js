@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const jwt = require('jsonwebtoken')
+const { Int32 } = require('mongodb')
 
 const Schema = mongoose.Schema
 
@@ -18,6 +19,16 @@ const userSchema = new Schema({
   __v: {
     type: Boolean,
     default: false
+  },
+  lbs: {
+    type: Number,
+    default: 125,
+    validate: {
+      validator: function(value) {
+        return value > 0 && value <= 5000;
+      },
+      message: 'Lbs value must be greater than 0 and less than or equal to 5000'
+    }
   },
   verificationToken: String
 })
