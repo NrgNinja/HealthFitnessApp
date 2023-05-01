@@ -3,16 +3,28 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: rgb(84, 84, 223);
   --error: #e7195a;
 }
 body {
-  background: #f1f1f1;
-  margin: 0;
   font-family: "Poppins";
+  background: #2C323D;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  background: linear-gradient(to bottom, #49566C 70%, #2C323D);
+  height: 100vh;
 }
 header {
   background: #fff;
+  width:100%;
+  top:0;
+  position:fixed;
+  z-index: 1;
 }
 header .container {
   max-width: 1400px;
@@ -35,16 +47,23 @@ header a {
 /* homepage */
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 15fr 1fr;
   gap: 100px;
+  padding-top: 150px
+}
+
+.workouts {
+  margin-left: 50%;
+  border: 3px solid black;
 }
 .workout-details {
   background: #fff;
   border-radius: 4px;
-  margin: 20px auto;
+  margin: 15px;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  text-align:left;
 }
 .workout-details h4 {
   margin: 0 0 10px 0;
@@ -67,6 +86,11 @@ header a {
   color: #333;
 }
 
+.create {
+  color: white;
+  position: fixed;
+  left: 10%;;
+}
 /* new workout form */
 label, input {
   display: block;
@@ -75,19 +99,56 @@ input {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
-  width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box;
+ 
 }
-form button {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
+
+input[type="email"],
+input[type="password"] {
   padding: 10px;
-  font-family: "Poppins";
-  border-radius: 4px;
+  margin: 10px 0;
+  margin-bottom:20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+   box-sizing: border-box;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover {
+  border-color: #555;
+}
+
+input[type="text"],
+input[type="number"]  {
+  border: 4px solid black;
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover {
+  border-color:#516BC7;
+  transition: border-color 0.5s;
+}
+
+
+form button {
   cursor: pointer;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+  font-family: "Poppins";
+}
+
+button:hover {
+  background-color: skyblue;
+  cursor: pointer;
+  transition: background-color 0.5s;
 }
 div.error {
   padding: 10px;
@@ -122,9 +183,18 @@ nav button {
 
 /* auth forms */
 form.signup, form.login {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
   background: #fff;
-  border-radius: 4px;
+  width: 400px;
+  margin: 40px auto;
+  margin-top: 200px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  
+}
+
+.material-symbols-outlined:hover {
+  background-color: red;
+  transition: background-color 0.5s;
 }

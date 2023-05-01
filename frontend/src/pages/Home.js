@@ -19,6 +19,8 @@
 import { useEffect }from 'react'
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
+import { motion as m } from "framer-motion"
+import { AnimatePresence } from "framer-motion";
 
 // components
 import WorkoutDetails from '../components/WorkoutDetails'
@@ -46,14 +48,20 @@ const Home = () => {
   }, [dispatch, user])
 
   return (
-    <div className="home">
+    <m.div className="home"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 2 }}>
       <div className="workouts">
+        <AnimatePresence>
         {workouts && workouts.map((workout) => (
           <WorkoutDetails key={workout._id} workout={workout} />
+          
         ))}
+        </AnimatePresence>
       </div>
       <WorkoutForm />
-    </div>
+    </m.div>
   )
 }
 
