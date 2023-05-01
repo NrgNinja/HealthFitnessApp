@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSignup } from "../hooks/useSignup"
+import { motion as m } from "framer-motion"
 
 const Signup = () => {
   const [email, setEmail] = useState('')
@@ -13,7 +14,10 @@ const Signup = () => {
   }
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
+    <m.form className="signup" onSubmit={handleSubmit}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 2 }}>
       <h3>Sign Up</h3>
       
       <label>Email address:</label>
@@ -31,7 +35,7 @@ const Signup = () => {
 
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}
-    </form>
+    </m.form>
   )
 }
 

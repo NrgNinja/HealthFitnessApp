@@ -1,5 +1,6 @@
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { motion } from "framer-motion"
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -29,14 +30,37 @@ const WorkoutDetails = ({ workout }) => {
     }
   }
 
+  const variants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+
+      transition: {
+        duration: 1,
+      },
+      exit: {
+        opacity:0,
+        transition: {
+          duration: 1,
+        },
+      }
+    },
+  }
+
   return (
-    <div className="workout-details">
+    <motion.div className="workout-details" 
+    variants={variants} 
+    initial="hidden" 
+    animate="visible"
+    exit="hidden">
       <h4>{workout.title}</h4>
       <p><strong>Load (lbs): </strong>{workout.load}</p>
       <p><strong>Reps: </strong>{workout.reps}</p>
       <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
-    </div>
+    </motion.div>
   )
 }
 
