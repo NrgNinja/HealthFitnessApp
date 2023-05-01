@@ -5,6 +5,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts')
 const userRoutes = require('./routes/user')
+const foodRoutes = require('./routes/food')
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/workouts', workoutRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/foods', foodRoutes)
 
 // deployment
 __dirname = path.resolve()

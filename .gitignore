@@ -18,6 +18,7 @@
 
 # Environment variables
 backend/.env
+backend/sendgrid.env
 frontend/.env.local
 
 # misc

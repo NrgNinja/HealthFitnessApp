@@ -28,15 +28,30 @@
   top:5%;
   left:5%;
 }
+.operator- {
+  position: absolute;
+  top:30%;
+  left:27%;
+}
 .Eats {
   position: absolute;
   top:5%;
   left:35%;
 }
+.operatorp {
+  position: absolute;
+  top:30%;
+  left:50%;
+}
 .Lifts {
   position: absolute;
   top:5%;
   right:35%;
+}
+.operatoreq {
+  position: absolute;
+  top:30%;
+  right:27%;
 }
 .Total {
   position: absolute;
