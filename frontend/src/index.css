@@ -198,3 +198,24 @@ form.signup, form.login {
   background-color: red;
   transition: background-color 0.5s;
 }
+
+.image-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.image {
+  position: fixed;
+  right: 17%;
+  bottom: 0%;
+  z-index: 9999;
+  max-width:fit-content;
+  max-height:fit-content;
+  font-family: "Poppins";
+}

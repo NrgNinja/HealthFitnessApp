@@ -42,8 +42,9 @@ const signupUser = async (req, res) => {
     const user = await User.create({ email, password: hashedPassword });
 
     // Generate a verification link and send it to the user's email
-    const verificationToken = jwt.sign({ userId: user._id }, process.env.SECRET, { expiresIn: '1h' });
-    const verificationLink = `${process.env.BASE_URL}/verify/${verificationToken}`;
+    //const verificationToken = jwt.sign({ userId: user._id }, process.env.SECRET, { expiresIn: '1h' });
+    const verificationToken = jwt.sign({ email }, process.env.SECRET, { expiresIn: '24h' });
+    const verificationLink = `${process.env.BASE_URL}verify/${verificationToken}`;
     await sendVerificationEmail(email, verificationLink);
 
     return res.status(201).json({ message: 'User created successfully' });
@@ -53,5 +54,16 @@ const signupUser = async (req, res) => {
   }
 };
 
+// Verify user's email
+const verifyEmail = async (req, res) => {
+  const verificationToken = req.params.token;
 
-module.exports = { signupUser, loginUser }
+  try {
+    const user = await User.verifyEmail(verificationToken);
+    res.status(200).json({ message: 'Email verified successfully' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser, verifyEmail };

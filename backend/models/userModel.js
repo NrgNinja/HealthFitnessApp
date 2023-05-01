@@ -20,16 +20,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
-  lbs: {
-    type: Number,
-    default: 125,
-    validate: {
-      validator: function(value) {
-        return value > 0 && value <= 5000;
-      },
-      message: 'Lbs value must be greater than 0 and less than or equal to 5000'
-    }
-  },
+
   verificationToken: String
 })
 
@@ -57,10 +48,10 @@ userSchema.statics.signup = async function(email, password) {
   const hash = await bcrypt.hash(password, salt)
 
   // Generate verification token
-  const verificationToken = jwt.sign({ email }, process.env.SECRET, { expiresIn: '1h' })
+  const verificationToken = jwt.sign({ email }, process.env.SECRET, { expiresIn: '24h' })
 
   const user = await this.create({ email, password: hash, verificationToken, __v: false })
-
+  throw Error('Check you email for a verification link!')
   return user
 }
 
