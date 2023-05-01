@@ -46,15 +46,15 @@ const Home = () => {
     >
       {/* Add button to bottom left corner */}
       {!showImage && (
-        <button
+        <m.button
           className="image-button"
           onClick={handleButtonClick}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 200 }}
         >
           Press to see the peak of masculinity
-        </button>
+        </m.button>
       )}
       {showImage && (
         <m.img
