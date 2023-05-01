@@ -9,7 +9,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const sendVerificationEmail = async (recipientEmail, verificationLink) => {
   const message = {
     to: recipientEmail,
-    from: 'lift-log@mail.com',
+    from: 'tjhedrick@knights.ucf.edu',
     subject: 'Please verify your email',
     html: `Please click this link to verify your email: <a href="${verificationLink}">${verificationLink}</a>`,
   };

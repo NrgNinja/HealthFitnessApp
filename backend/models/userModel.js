@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
+const jwt = require('jsonwebtoken')
+const { Int32 } = require('mongodb')
 
 const Schema = mongoose.Schema
 
@@ -13,7 +15,22 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  __v: {
+    type: Boolean,
+    default: false
+  },
+  lbs: {
+    type: Number,
+    default: 125,
+    validate: {
+      validator: function(value) {
+        return value > 0 && value <= 5000;
+      },
+      message: 'Lbs value must be greater than 0 and less than or equal to 5000'
+    }
+  },
+  verificationToken: String
 })
 
 // static signup method
@@ -27,22 +44,26 @@ userSchema.statics.signup = async function(email, password) {
     throw Error('Email not valid')
   }
   if (!validator.isStrongPassword(password)) {
-    throw Error('Password must have at least 8 characters, 1 lowercase, 1 uppercase, 1 number, & 1 special character')
+    throw Error('Password not strong enough')
   }
 
   const exists = await this.findOne({ email })
 
   if (exists) {
-    throw Error('This email already in use')
+    throw Error('Email already in use')
   }
 
   const salt = await bcrypt.genSalt(10)
   const hash = await bcrypt.hash(password, salt)
 
-  const user = await this.create({ email, password: hash })
+  // Generate verification token
+  const verificationToken = jwt.sign({ email }, process.env.SECRET, { expiresIn: '1h' })
+
+  const user = await this.create({ email, password: hash, verificationToken, __v: false })
 
   return user
 }
+
 
 // static login method
 userSchema.statics.login = async function(email, password) {
@@ -59,6 +80,23 @@ userSchema.statics.login = async function(email, password) {
   const match = await bcrypt.compare(password, user.password)
   if (!match) {
     throw Error('Incorrect password')
+  }
+
+  if (!user.__v) {
+    throw Error('Please verify your email first')
+  }
+
+  return user
+}
+
+// Verify user's email
+userSchema.statics.verifyEmail = async function(verificationToken) {
+  const payload = jwt.verify(verificationToken, process.env.SECRET)
+
+  const user = await this.findOneAndUpdate({ email: payload.email, verificationToken }, { $set: { __v: true } }, { new: true })
+
+  if (!user) {
+    throw Error('Invalid or expired verification token')
   }
 
   return user
