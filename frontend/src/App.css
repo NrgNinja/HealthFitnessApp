@@ -3,13 +3,6 @@
   height: 100vh;
 }
 
-.Logout {
-  background-color: lightgrey;
-  position: absolute;
-  float:right;
-  margin-left: 90%;
-}
-
 .Calbox {
   text-align: center;
   background-color: lightgrey;
@@ -87,8 +80,6 @@
   background-color:#282c34;
   border-radius:20px;
   margin:5px;
-  height:80%;
-  width:95%;
   color:white;
   float: left;
   margin-left: 5% auto;

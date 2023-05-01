@@ -18,11 +18,9 @@ const Activitybox = () => {
     <div className="Activitybox">
       <h1>Exercise and Workouts</h1>
       <div className="Workoutbox">
-        <InflateAnimate>
         <div className="Workouts" onClick={doWorkout}>
             <p>Workout 1</p>
         </div>
-        </InflateAnimate>
         <div className="Workouts" onClick={doWorkout}>
           <InflateAnimate>
             <p>Workout 2</p>
