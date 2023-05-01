@@ -11,9 +11,10 @@ const foodSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   }
-});
+}, { timestamps: true });
 
 const Food = mongoose.model('Food', foodSchema);
 
