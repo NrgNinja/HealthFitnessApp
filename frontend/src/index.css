@@ -26,6 +26,14 @@ header {
   position:fixed;
   z-index: 1;
 }
+
+.logo-container {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -218,4 +226,44 @@ form.signup, form.login {
   max-width:fit-content;
   max-height:fit-content;
   font-family: "Poppins";
+}
+
+.institution-logo {
+  height: 40px; /* Adjust the height as needed */
+  width: auto;
+  margin-right: 10px; /* Add some spacing between the logo and the text */
+}
+
+.auth-link {
+  display: inline-block;
+  padding: 6px 10px;
+  margin-left: 10px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-link:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.github-logo {
+  height: 50px;
+  width: auto;
+  margin-right: 10px;
+  vertical-align: middle; /* Add this line */
+}
+
+.logo-caption {
+  font-size: 1em; /* Adjust the font size as needed */
+  color: #333;
+  margin-left: 10px; /* Add some spacing between the title and the caption */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
