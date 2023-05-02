@@ -18,9 +18,9 @@ const Signup = () => {
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 2 }}>
-      <h3>Sign Up</h3>
+      <h3>SIGN UP FOR A NEW ACCOUNT</h3>
       
-      <label>Email address:</label>
+      <label>Email Address:</label>
       <input 
         type="email" 
         onChange={(e) => setEmail(e.target.value)} 
@@ -33,7 +33,7 @@ const Signup = () => {
         value={password} 
       />
 
-      <button disabled={isLoading}>Sign up</button>
+      <button disabled={isLoading}>SIGN UP</button>
       {error && <div className="error">{error}</div>}
     </m.form>
   )
