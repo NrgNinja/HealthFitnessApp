@@ -73,6 +73,13 @@ header a {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
   text-align:left;
 }
+.search-container {
+    margin:10px;
+    width:90%;
+    align-self: center;
+    border-radius: 10px;
+    font-family: "Poppins";
+}
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
@@ -97,7 +104,7 @@ header a {
 .create {
   color: white;
   position: fixed;
-  left: 10%;;
+  left: 10%;
 }
 /* new workout form */
 label, input {
