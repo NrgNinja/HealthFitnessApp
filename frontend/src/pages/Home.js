@@ -1,11 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { motion as m } from 'framer-motion';
 import { AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-
-// components
 import WorkoutDetails from '../components/WorkoutDetails';
 import WorkoutForm from '../components/WorkoutForm';
 import bigBoy from '../pizap.jpg';
@@ -13,6 +10,7 @@ import bigBoy from '../pizap.jpg';
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
   const { user } = useAuthContext();
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -37,6 +35,14 @@ const Home = () => {
     setShowImage(!showImage);
   };
 
+  const filteredWorkouts = workouts
+    ? workouts.filter(
+        workout =>
+          workout.title &&
+          workout.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : workouts;
+
   return (
     <m.div
       className="home"
@@ -44,7 +50,7 @@ const Home = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 2 }}
     >
-      {/* Add button to bottom left corner */}
+
       {!showImage && (
         <m.button
           className="image-button"
@@ -69,9 +75,16 @@ const Home = () => {
       )}
       <div className="workouts">
         <WorkoutForm />
+        <div className="search-container">
+        <input className="search-container"
+          value={searchQuery}
+          onChange={event => setSearchQuery(event.target.value)}
+          placeholder="Search workouts..."
+        />
+      </div>
         <AnimatePresence>
-          {workouts &&
-            workouts.map((workout) => (
+        {filteredWorkouts &&
+            filteredWorkouts.map((workout) => (
               <WorkoutDetails key={workout._id} workout={workout} />
             ))}
         </AnimatePresence>

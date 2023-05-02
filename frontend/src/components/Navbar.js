@@ -33,7 +33,7 @@ const Navbar = () => {
               <span>
                 Welcome back <strong>{getUsername(user.email)}</strong>! It's grind time baby!
               </span>
-              <button onClick={handleClick}>Log Out</button>
+              <button className="auth-link" onClick={handleClick}>Log Out</button>
             </div>
           )}
           {!user && (
